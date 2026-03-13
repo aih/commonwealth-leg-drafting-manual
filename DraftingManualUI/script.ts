@@ -781,7 +781,7 @@ document.addEventListener('DOMContentLoaded', () => {
             prevDiv.className = 'chapter-navigation__prev';
 
             const prevLink = document.createElement('a');
-            prevLink.href = `/commonwealth-drafting-manual${prevChapter.filename}`;
+            prevLink.href = `${import.meta.env.BASE_URL}${prevChapter.filename}`;
             prevLink.className = 'chapter-navigation__link chapter-navigation__link--prev';
             prevLink.onclick = (e) => {
                 e.preventDefault();
@@ -808,7 +808,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nextDiv.className = 'chapter-navigation__next';
 
             const nextLink = document.createElement('a');
-            nextLink.href = `/commonwealth-drafting-manual${nextChapter.filename}`;
+            nextLink.href = `${import.meta.env.BASE_URL}${nextChapter.filename}`;
             nextLink.className = 'chapter-navigation__link chapter-navigation__link--next';
             nextLink.onclick = (e) => {
                 e.preventDefault();
@@ -866,7 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         updateSideNavCurrent(targetHash);
                     }
                     if (updateHistory) {
-                        const state = { filename: filename, hash: targetHash }; const title = document.title; const url = `/commonwealth-drafting-manual${filename}#${targetHash}`;
+                        const state = { filename: filename, hash: targetHash }; const title = document.title; const url = `${import.meta.env.BASE_URL}${filename}#${targetHash}`;
                         if (history.state && history.state.filename === filename) { history.replaceState(state, title, url); }
                         else { history.pushState(state, title, url); }
                         // console.log(`History ${history.state && history.state.filename === filename ? 'replaceState' : 'pushState'} (hash update):`, state, title, url);
@@ -879,7 +879,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         updateSideNavCurrent(null);
                     }
                     // Remove hash from URL on scroll to top
-                    history.replaceState({ filename: filename, hash: null }, document.title, `/commonwealth-drafting-manual${filename}`);
+                    history.replaceState({ filename: filename, hash: null }, document.title, `${import.meta.env.BASE_URL}${filename}`);
                 }
             }
             return;
@@ -968,7 +968,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- History update ---
             console.log("Updating history");
             if (updateHistory) {
-                const state = { filename: filename, hash: targetHash }; const title = document.title; let url = `/commonwealth-drafting-manual${filename}`;
+                const state = { filename: filename, hash: targetHash }; const title = document.title; let url = `${import.meta.env.BASE_URL}${filename}`;
                 if (targetHash) { url += `#${targetHash}`; } else if (isInitialLoad && location.hash) { url += location.hash; } // Preserve initial hash
                 const targetFullUrl = url; // Base path is handled by browser resolving relative links
 
@@ -1095,7 +1095,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.className = 'usa-sidenav__item';
 
             const a = document.createElement('a');
-            a.href = `/commonwealth-drafting-manual${chapter.filename}`;
+            a.href = `${import.meta.env.BASE_URL}${chapter.filename}`;
             a.textContent = `${chapter.number ? chapter.number + ' ' : ''}${chapter.title}`;
 
             if (isActive) {
@@ -1266,7 +1266,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentFilename) {
                 const state = { filename: currentFilename, hash: targetId };
                 const title = document.title;
-                const url = `/commonwealth-drafting-manual${currentFilename}#${targetId}`;
+                const url = `${import.meta.env.BASE_URL}${currentFilename}#${targetId}`;
                 try {
                     // Use replaceState for A-Z clicks to avoid polluting history too much
                     history.replaceState(state, title, url);
@@ -1414,7 +1414,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (currentFilename) {
                         const state = { filename: currentFilename, hash: targetId };
                         const title = document.title;
-                        const url = `/commonwealth-drafting-manual${currentFilename}#${targetId}`;
+                        const url = `${import.meta.env.BASE_URL}${currentFilename}#${targetId}`;
                         try {
                             history.replaceState(state, title, url);
                             // console.log("History replaceState (side nav click):", state, title, url);
@@ -1442,7 +1442,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const listItem = document.createElement('li');
             listItem.classList.add('usa-nav__submenu-item');
             const link = document.createElement('a');
-            link.href = `/commonwealth-drafting-manual${chapter.filename}`;
+            link.href = `${import.meta.env.BASE_URL}${chapter.filename}`;
             link.textContent = `${chapter.number}${chapter.number ? ': ' : ''}${chapter.title}`;
             link.dataset.filename = chapter.filename;
 
@@ -1454,7 +1454,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     chapterContent?.scrollTo({ top: 0, behavior: 'smooth' });
                     if (filename !== 'glossary.html') updateSideNavCurrent(null);
-                    history.replaceState({ filename: filename, hash: null }, document.title, `/${filename}`);
+                    history.replaceState({ filename: filename, hash: null }, document.title, `${import.meta.env.BASE_URL}${filename}`);
                 }
                 if (uswdsNav && uswdsNav.classList.contains('is-visible')) {
                     uswdsOverlay?.classList.remove('is-visible');
@@ -1525,7 +1525,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (firstChapterFilename !== 'glossary.html') {
                         updateSideNavCurrent(null);
                     }
-                    history.replaceState({ filename: firstChapterFilename, hash: null }, document.title, `/${firstChapterFilename}`);
+                    history.replaceState({ filename: firstChapterFilename, hash: null }, document.title, `${import.meta.env.BASE_URL}${firstChapterFilename}`);
                 }
             } else {
                 console.warn("Home link clicked, but no chapters defined.");
@@ -1578,7 +1578,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     const state = { filename: currentFilename, hash: targetHash };
                     const title = document.title;
-                    const url = `/commonwealth-drafting-manual${currentFilename}#${targetHash}`;
+                    const url = `${import.meta.env.BASE_URL}${currentFilename}#${targetHash}`;
                     history.replaceState(state, title, url);
                 }
             }
@@ -1599,10 +1599,16 @@ document.addEventListener('DOMContentLoaded', () => {
             filenameToLoad = event.state.filename;
             hashToLoad = event.state.hash || hashToLoad;
         } else {
-            const baseHref = document.querySelector('base')?.href || window.location.origin + '/';
-            let path = window.location.pathname.substring(baseHref.replace(window.location.origin, '').length);
+            // Use Vite's BASE_URL to correctly strip the deployment base path
+            const basePath = import.meta.env.BASE_URL;
+            let path = window.location.pathname;
+            // Strip the base path prefix if present
+            if (path.startsWith(basePath)) {
+                path = path.slice(basePath.length);
+            }
             path = path.replace(/\/$/, '');
-            let filenameFromPath = path.split('/').pop()?.replace(/^commonwealth-drafting-manual/, '');
+            // Extract just the filename from the path (e.g. about.html or 7306.xhtml)
+            const filenameFromPath = path.split('/').pop() || '';
             const matchedChapter = chapters.find(c => c.filename === filenameFromPath);
 
             if (matchedChapter) {

@@ -1344,5 +1344,80 @@ button:focus,
 	}
 }
 
+/* --- Mobile Overflow & Readability Fixes --- */
+@media (max-width: 40em) {
+	/* Prevent horizontal overflow on mobile */
+	html, body {
+		overflow-x: hidden;
+		max-width: 100%;
+	}
+
+	/* Make tables scrollable horizontally instead of breaking layout */
+	.content table {
+		display: block;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		max-width: 100%;
+	}
+
+	/* Prevent wide pre/code blocks from breaking layout */
+	.content pre,
+	.content code {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		max-width: 100%;
+		white-space: pre-wrap;
+		word-break: break-word;
+	}
+
+	/* Scale down large headings on mobile */
+	main > title, chapter > title, chapter > level_title {
+		font-size: 1.75em;
+	}
+
+	section > section_title {
+		font-size: 1.5em;
+	}
+
+	subsection > subsection_title {
+		font-size: 1.25em;
+	}
+
+	/* Ensure images don't overflow */
+	.content img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	/* Ensure wide elements inside content don't cause horizontal scroll */
+	.content {
+		overflow-x: hidden;
+		word-break: break-word;
+	}
+
+	/* Better touch targets for chapter navigation links */
+	.chapter-navigation__link {
+		min-height: 44px; /* Minimum touch target size */
+		display: flex;
+		align-items: center;
+	}
+
+	/* Logo text scaling for very small screens */
+	.logo-main {
+		font-size: 1rem;
+	}
+	.logo-sub {
+		font-size: 0.8rem;
+	}
+
+	/* Version tooltip on mobile - position so it doesn't go off-screen */
+	.version-tooltip {
+		left: 0;
+		right: auto;
+		min-width: 280px;
+		max-width: calc(100vw - 2rem);
+	}
+}
+
 
 /* --- END OF FILE style.css --- */
