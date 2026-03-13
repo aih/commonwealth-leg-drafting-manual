@@ -1,23 +1,18 @@
 [
   {
     "number": "",
-    "title": "Commonwealth Legislative Drafting Manual",
-    "filename": "7305.xhtml"
-  },
-  {
-    "number": "",
     "title": "Foreword",
-    "filename": "7306.xhtml"
+    "filename": "foreword.xhtml"
   },
   {
     "number": "",
     "title": "Preface",
-    "filename": "7307.xhtml"
+    "filename": "preface.xhtml"
   },
   {
     "number": "",
     "title": "Acknowledgements",
-    "filename": "7308.xhtml"
+    "filename": "acknowledgements.xhtml"
   },
   {
     "number": "",
@@ -32,7 +27,7 @@
   {
     "number": "",
     "title": "Chapter 3 Background Legislation",
-    "filename": "7311.xhtml"
+    "filename": "ch3-background-legislation.xhtml"
   },
   {
     "number": "",
@@ -42,22 +37,22 @@
   {
     "number": "",
     "title": "Chapter 5 Modern Commonwealth Conventions in Legislative Drafting",
-    "filename": "7313.xhtml"
+    "filename": "ch5-modern-commonwealth-conventions-in-legislative-drafting.xhtml"
   },
   {
     "number": "",
     "title": "Chapter 6 Plain Language Drafting",
-    "filename": "7314.xhtml"
+    "filename": "ch6-plain-language-drafting.xhtml"
   },
   {
     "number": "",
     "title": "Chapter 7 Structuring Legislative Drafts",
-    "filename": "7315.xhtml"
+    "filename": "ch7-structuring-legislative-drafts.xhtml"
   },
   {
     "number": "",
     "title": "Chapter 8 Punctuation (and Capitalisation)",
-    "filename": "7316.xhtml"
+    "filename": "ch8-punctuation-and-capitalisation.xhtml"
   },
   {
     "number": "",
@@ -66,13 +61,13 @@
   },
   {
     "number": "",
-    "title": "Chapter 10: Words to use with Special Care (and Other Drafting Problems)",
-    "filename": "7318.xhtml"
+    "title": "Chapter 10 Words to use with Special Care (and Other Drafting Problems)",
+    "filename": "ch10-words-to-use-with-special-care-and-other-drafting-problems.xhtml"
   },
   {
     "number": "",
     "title": "Chapter 11 The Legislative Scheme: Principles Governing the Type of Legislation Required and the Ordering of Its Provisions",
-    "filename": "7319.xhtml"
+    "filename": "ch11-the-legislative-scheme-principles-governing-the-type-of-legislation-required-and-the-ordering-of-its-provisions.xhtml"
   },
   {
     "number": "",
@@ -87,7 +82,7 @@
   {
     "number": "",
     "title": "Chapter 14 Penal Provisions",
-    "filename": "7322.xhtml"
+    "filename": "ch14-penal-provisions.xhtml"
   },
   {
     "number": "",
@@ -107,12 +102,12 @@
   {
     "number": "",
     "title": "Chapter 18 Statutory Corporations",
-    "filename": "7326.xhtml"
+    "filename": "ch18-statutory-corporations.xhtml"
   },
   {
     "number": "",
     "title": "Chapter 19 Licensing Legislation",
-    "filename": "7327.xhtml"
+    "filename": "ch19-licensing-legislation.xhtml"
   },
   {
     "number": "",
@@ -121,27 +116,27 @@
   },
   {
     "number": "",
-    "title": "Appendix A: Legislative Procedure and Preparation",
-    "filename": "7329.xhtml"
+    "title": "Appendix A",
+    "filename": "app-a.xhtml"
   },
   {
     "number": "",
-    "title": "Appendix BGuidelines for the Preparation of Cabinet Submissions1",
-    "filename": "7330.xhtml"
+    "title": "Appendix B Guidelines for the Preparation of Cabinet Submissions 1",
+    "filename": "app-b-guidelines-for-the-preparation-of-cabinet-submissions-1.xhtml"
   },
   {
     "number": "",
-    "title": "Appendix CDrafting Instructions",
-    "filename": "7331.xhtml"
+    "title": "Appendix C Drafting Instructions",
+    "filename": "app-c-drafting-instructions.xhtml"
   },
   {
     "number": "",
-    "title": "Appendix D: Suggested Approaches to Translation of Policy",
-    "filename": "7332.xhtml"
+    "title": "Appendix D",
+    "filename": "app-d.xhtml"
   },
   {
     "number": "",
     "title": "Appendix E",
-    "filename": "7333.xhtml"
+    "filename": "app-e.xhtml"
   }
 ]
