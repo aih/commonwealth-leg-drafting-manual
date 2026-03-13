@@ -7,6 +7,15 @@ The digital document generated in this repository was converted using Large Lang
 ### Working UI Demo
 ![Application Walkthrough](DraftingManualUI/public/assets/working_ui_demo.webp)
 
+## GitHub Pages Deployment
+The converted web-native application is deployed to GitHub Pages at:
+[https://aih.github.io/commonwealth-leg-drafting-manual/](https://aih.github.io/commonwealth-leg-drafting-manual/)
+
+### Deployment Architecture
+The documentation UI is built as a static Single-Page Application (SPA) using Vite. Since GitHub Pages natively expects individual HTML files for every route, we implement a simple SPA router hack using a `404.html` redirect script. 
+
+When a direct deep link is accessed (like `/commonwealth-drafting-manual` followed by a chapter name), GitHub Pages initially flags it as a 404. The `404.html` script catches this, translates the URL path into a search query string, and redirects to the base `index.html`. Finally, a small `<script>` block in the index `<head>` parses the query string, strips the `commonwealth-drafting-manual` prefix, and uses `window.history.replaceState` to seamlessly restore the original clean URL view before the application router begins to load the actual chapter content. The default root URL will redirect to the `about.html` chapter.
+
 ## Self-Serve Conversion Engine Tooling
 
 The robust PDF-to-XHTML conversion pipeline, as well as the generalized generic frontend UI for displaying such converted documents, have been decoupled and moved to the dedicated `pdf-convert-llm` repository under the Ad Hoc team. 

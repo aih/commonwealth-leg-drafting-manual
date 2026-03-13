@@ -781,7 +781,7 @@ document.addEventListener('DOMContentLoaded', () => {
             prevDiv.className = 'chapter-navigation__prev';
 
             const prevLink = document.createElement('a');
-            prevLink.href = `/${prevChapter.filename}`;
+            prevLink.href = `/commonwealth-drafting-manual${prevChapter.filename}`;
             prevLink.className = 'chapter-navigation__link chapter-navigation__link--prev';
             prevLink.onclick = (e) => {
                 e.preventDefault();
@@ -808,7 +808,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nextDiv.className = 'chapter-navigation__next';
 
             const nextLink = document.createElement('a');
-            nextLink.href = `/${nextChapter.filename}`;
+            nextLink.href = `/commonwealth-drafting-manual${nextChapter.filename}`;
             nextLink.className = 'chapter-navigation__link chapter-navigation__link--next';
             nextLink.onclick = (e) => {
                 e.preventDefault();
@@ -866,7 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         updateSideNavCurrent(targetHash);
                     }
                     if (updateHistory) {
-                        const state = { filename: filename, hash: targetHash }; const title = document.title; const url = `/${filename}#${targetHash}`;
+                        const state = { filename: filename, hash: targetHash }; const title = document.title; const url = `/commonwealth-drafting-manual${filename}#${targetHash}`;
                         if (history.state && history.state.filename === filename) { history.replaceState(state, title, url); }
                         else { history.pushState(state, title, url); }
                         // console.log(`History ${history.state && history.state.filename === filename ? 'replaceState' : 'pushState'} (hash update):`, state, title, url);
@@ -879,7 +879,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         updateSideNavCurrent(null);
                     }
                     // Remove hash from URL on scroll to top
-                    history.replaceState({ filename: filename, hash: null }, document.title, `/${filename}`);
+                    history.replaceState({ filename: filename, hash: null }, document.title, `/commonwealth-drafting-manual${filename}`);
                 }
             }
             return;
@@ -918,13 +918,27 @@ document.addEventListener('DOMContentLoaded', () => {
             // console.log("Fetch response status:", response.status);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status} for ${fetchPath}`);
             const html = await response.text();
+            // Use XML parser for .xhtml files to handle XML structure, then extract inner content
+            const isXhtml = fetchPath.toLowerCase().endsWith('.xhtml') || fetchPath.toLowerCase().endsWith('-src.xhtml');
+            const mimeType = isXhtml ? 'application/xhtml+xml' : 'text/html';
             const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            // Prefer specific root elements, fall back to body
-            const specificRoot = doc.querySelector('chapter, table_of_authorities, dl');
-            const contentElement = specificRoot || doc.body; // Use specific root or body if not found
+            const doc = parser.parseFromString(html, mimeType);
+            
+            // Prefer specific root elements, fall back to body (or documentElement for xml)
+            const specificRoot = doc.querySelector('chapter, table_of_authorities, dl, content');
+            const contentElement = specificRoot || doc.body || doc.documentElement; 
             console.log("Setting chapterContent.innerHTML");
-            chapterContent.innerHTML = contentElement ? contentElement.innerHTML : '<p class="usa-alert usa-alert--error">Could not parse main content.</p>';
+            
+            if (isXhtml && contentElement) {
+                // The XHTML files contain escaped HTML inside XML nodes, e.g., <chunk_processing_error>&lt;h1&gt;...
+                // By getting textContent of the XML contentElement, we decode &lt; back to <
+                const rawHtmlStr = contentElement.textContent || '';
+                // Now parse that raw string as normal HTML to generate actual DOM elements
+                const htmlDoc = parser.parseFromString(rawHtmlStr, 'text/html');
+                chapterContent.innerHTML = htmlDoc.body ? htmlDoc.body.innerHTML : rawHtmlStr;
+            } else {
+                chapterContent.innerHTML = contentElement ? contentElement.innerHTML : '<p class="usa-alert usa-alert--error">Could not parse main content.</p>';
+            }
             // --- End fetching/parsing ---
 
             console.log("Updating currentFilename and title");
@@ -954,7 +968,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- History update ---
             console.log("Updating history");
             if (updateHistory) {
-                const state = { filename: filename, hash: targetHash }; const title = document.title; let url = `/${filename}`;
+                const state = { filename: filename, hash: targetHash }; const title = document.title; let url = `/commonwealth-drafting-manual${filename}`;
                 if (targetHash) { url += `#${targetHash}`; } else if (isInitialLoad && location.hash) { url += location.hash; } // Preserve initial hash
                 const targetFullUrl = url; // Base path is handled by browser resolving relative links
 
@@ -1081,7 +1095,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.className = 'usa-sidenav__item';
 
             const a = document.createElement('a');
-            a.href = `/${chapter.filename}`;
+            a.href = `/commonwealth-drafting-manual${chapter.filename}`;
             a.textContent = `${chapter.number ? chapter.number + ' ' : ''}${chapter.title}`;
 
             if (isActive) {
@@ -1252,7 +1266,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentFilename) {
                 const state = { filename: currentFilename, hash: targetId };
                 const title = document.title;
-                const url = `/${currentFilename}#${targetId}`;
+                const url = `/commonwealth-drafting-manual${currentFilename}#${targetId}`;
                 try {
                     // Use replaceState for A-Z clicks to avoid polluting history too much
                     history.replaceState(state, title, url);
@@ -1400,7 +1414,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (currentFilename) {
                         const state = { filename: currentFilename, hash: targetId };
                         const title = document.title;
-                        const url = `/${currentFilename}#${targetId}`;
+                        const url = `/commonwealth-drafting-manual${currentFilename}#${targetId}`;
                         try {
                             history.replaceState(state, title, url);
                             // console.log("History replaceState (side nav click):", state, title, url);
@@ -1428,7 +1442,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const listItem = document.createElement('li');
             listItem.classList.add('usa-nav__submenu-item');
             const link = document.createElement('a');
-            link.href = `/${chapter.filename}`;
+            link.href = `/commonwealth-drafting-manual${chapter.filename}`;
             link.textContent = `${chapter.number}${chapter.number ? ': ' : ''}${chapter.title}`;
             link.dataset.filename = chapter.filename;
 
@@ -1564,7 +1578,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     const state = { filename: currentFilename, hash: targetHash };
                     const title = document.title;
-                    const url = `/${currentFilename}#${targetHash}`;
+                    const url = `/commonwealth-drafting-manual${currentFilename}#${targetHash}`;
                     history.replaceState(state, title, url);
                 }
             }
@@ -1588,37 +1602,37 @@ document.addEventListener('DOMContentLoaded', () => {
             const baseHref = document.querySelector('base')?.href || window.location.origin + '/';
             let path = window.location.pathname.substring(baseHref.replace(window.location.origin, '').length);
             path = path.replace(/\/$/, '');
-            let filenameFromPath = path.split('/').pop();
+            let filenameFromPath = path.split('/').pop()?.replace(/^commonwealth-drafting-manual/, '');
             const matchedChapter = chapters.find(c => c.filename === filenameFromPath);
 
             if (matchedChapter) {
                 filenameToLoad = matchedChapter.filename;
             } else if ((path === '' || path === '/') && chapters.length > 0) {
-                const defaultChapter = chapters[0];
-                filenameToLoad = defaultChapter ? defaultChapter.filename : 'introduction.html';
+                const aboutChapter = chapters.find(c => c.filename === 'about.html') || chapters[0];
+                filenameToLoad = aboutChapter ? aboutChapter.filename : 'about.html';
             } else {
                 // Happens when user hits Back button to reach the initial state
                 // Load the first chapter (or default)
                 console.log("popstate: No filename in state or URL. Loading default chapter.");
-                const defaultChapter = chapters[0];
-                filenameToLoad = defaultChapter ? defaultChapter.filename : 'introduction.html';
+                const aboutChapter = chapters.find(c => c.filename === 'about.html') || chapters[0];
+                filenameToLoad = aboutChapter ? aboutChapter.filename : 'about.html';
             }
         }
 
         if (filenameToLoad) {
             console.log(`Popstate loading: filename='${filenameToLoad}', hash='${hashToLoad}'`);
             loadContent(filenameToLoad, {
-                updateHistory: false, // History already changed
+                updateHistory: true, // We need to update history if it was a deep link load so that we replaceState with the proper prefix
                 forceReload: true,   // Force reload to ensure UI consistency
                 targetHash: hashToLoad,
-                isInitialLoad: false
+                isInitialLoad: true // Set to true so that history.replaceState is used
             });
         } else {
             console.warn("Popstate: Could not determine content to load from state or URL.");
             if (chapters.length > 0) { // Attempt to load default if possible
-                const defaultChapter = chapters[0];
+                const defaultChapter = chapters.find(c => c.filename === 'about.html') || chapters[0];
                 if (defaultChapter) {
-                    loadContent(defaultChapter.filename, { updateHistory: false, forceReload: true, targetHash: null, isInitialLoad: false });
+                    loadContent(defaultChapter.filename, { updateHistory: true, forceReload: true, targetHash: null, isInitialLoad: true });
                 }
             } else {
                 if (chapterContent) chapterContent.innerHTML = "<p class='usa-alert usa-alert--error'>Cannot determine content to load.</p>";
@@ -1626,6 +1640,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (sideNavElement) sideNavElement.classList.add('hidden');
             }
         }
+    });
+
+    // Trigger initial load by dispatching a popstate event
+    window.addEventListener('load', () => {
+       window.dispatchEvent(new Event('popstate'));
     });
 
     // Search listener removed since Algolia Search is disabled
@@ -1695,7 +1714,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (originalContent && chapterContent) {
                     // Reload the current page to get original content - this resets main content
                     // and triggers side nav regeneration in English
-                    const currentFile = currentFilename || 'introduction.html';
+                    const currentFile = currentFilename || 'about.html';
                     loadContent(currentFile, { updateHistory: false, forceReload: true });
 
                     // Re-populate chapters dropdown to restore English
@@ -1734,7 +1753,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 chapterContent.innerHTML = originalContent;
 
                 // Regenerate sidenav from English content
-                const currentFile = currentFilename || 'introduction.html';
+                const currentFile = currentFilename || 'about.html';
                 generateNavigation(currentFile);
             }
 
