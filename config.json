@@ -1,0 +1,7 @@
+{
+  "title": "Commonwealth Legislative Drafting Manual",
+  "headerTitleMain": "Commonwealth Legislative Drafting Manual",
+  "headerTitleSub": "The Commonwealth iLibrary",
+  "showAdHocBanner": false,
+  "aboutHtml": "<p>This site translates the <strong>Commonwealth Legislative Drafting Manual</strong> into a dynamic web-native application. The Manual has historically served as a foundational resource and practical guide for legislative counsel across Commonwealth member countries, promoting clarity, consistency, and modernized approaches like plain language in legislation. The original Manual is released under the <a href='https://creativecommons.org/licenses/by-nc-nd/4.0/' class='usa-link' target='_blank'>Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a> (CC BY-NC-ND 4.0).</p><p>The pipeline to convert and structure the raw PDFs into organized HTML content, as well as the robust display UI, is available open-source. For the generic conversion engine used to build this site, please visit the <a href='https://github.com/aih/pdf-convert-llm' class='usa-link' target='_blank'>pdf-convert-llm</a> repository.</p>"
+}
