@@ -8,7 +8,22 @@
     <!-- <base href="/"> -->
 
     <title>Commonwealth Legislative Drafting Manual</title>
-    <link rel="icon" type="image/png" href="/commonwealth-leg-drafting-manual/assets/favicon-IMzt-Jjm.png">
+    <link rel="icon" type="image/png" href="/assets/favicon-IMzt-Jjm.png">
+    
+    <!-- GitHub Pages SPA routing script -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    
     <!-- 
       Security Note: External CDN resources should use Subresource Integrity (SRI) hashes
       to prevent tampering. Consider self-hosting these assets or adding SRI attributes.
@@ -17,8 +32,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/autocomplete-theme-classic@1" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uswds/3.12.0/css/uswds.min.css">
 
-    <script type="module" crossorigin src="/commonwealth-leg-drafting-manual/assets/index-CXAnb3zQ.js"></script>
-    <link rel="stylesheet" crossorigin href="/commonwealth-leg-drafting-manual/assets/index-CJaSSdNx.css">
+    <script type="module" crossorigin src="/assets/index-gaWMr3gM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CJaSSdNx.css">
   </head>
 
   <body>
@@ -71,7 +86,7 @@
                         aria-label="Translate current chapter">
                         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img"
                           style="margin-right: 0.25rem;">
-                          <use xlink:href="/commonwealth-leg-drafting-manual/assets/img/sprite.svg#language"></use>
+                          <use xlink:href="/assets/img/sprite.svg#language"></use>
                         </svg>
                         Translate
                       </button>
@@ -108,7 +123,7 @@
             </div>
             <nav aria-label="Primary navigation" class="usa-nav">
               <button type="button" class="usa-nav__close" aria-label="Close menu">
-                <img src="/commonwealth-leg-drafting-manual/assets/img/usa-icons/close.svg" alt="" aria-hidden="true" />
+                <img src="/assets/img/usa-icons/close.svg" alt="" aria-hidden="true" />
               </button>
               <!-- **** ADD usa-accordion class here **** -->
               <ul class="usa-nav__primary usa-accordion">
