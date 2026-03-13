@@ -918,27 +918,17 @@ document.addEventListener('DOMContentLoaded', () => {
             // console.log("Fetch response status:", response.status);
             if (!response.ok) throw new Error(`HTTP error! Status: ${response.status} for ${fetchPath}`);
             const html = await response.text();
-            // Use XML parser for .xhtml files to handle XML structure, then extract inner content
-            const isXhtml = fetchPath.toLowerCase().endsWith('.xhtml') || fetchPath.toLowerCase().endsWith('-src.xhtml');
-            const mimeType = isXhtml ? 'application/xhtml+xml' : 'text/html';
+            // Use HTML parser instead of XML parser to avoid strict <parsererror> rendering issues
+            const mimeType = 'text/html';
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, mimeType);
             
-            // Prefer specific root elements, fall back to body (or documentElement for xml)
+            // Prefer specific root elements, fall back to body
             const specificRoot = doc.querySelector('chapter, table_of_authorities, dl, content');
-            const contentElement = specificRoot || doc.body || doc.documentElement; 
+            const contentElement = specificRoot || doc.body; 
             console.log("Setting chapterContent.innerHTML");
             
-            if (isXhtml && contentElement) {
-                // The XHTML files contain escaped HTML inside XML nodes, e.g., <chunk_processing_error>&lt;h1&gt;...
-                // By getting textContent of the XML contentElement, we decode &lt; back to <
-                const rawHtmlStr = contentElement.textContent || '';
-                // Now parse that raw string as normal HTML to generate actual DOM elements
-                const htmlDoc = parser.parseFromString(rawHtmlStr, 'text/html');
-                chapterContent.innerHTML = htmlDoc.body ? htmlDoc.body.innerHTML : rawHtmlStr;
-            } else {
-                chapterContent.innerHTML = contentElement ? contentElement.innerHTML : '<p class="usa-alert usa-alert--error">Could not parse main content.</p>';
-            }
+            chapterContent.innerHTML = contentElement ? contentElement.innerHTML : html;
             // --- End fetching/parsing ---
 
             console.log("Updating currentFilename and title");
