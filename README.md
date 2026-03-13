@@ -4,6 +4,9 @@ This repository holds the project for downloading and converting the PDF chapter
 
 The digital document generated in this repository was converted using Large Language Models (Gemini 3.1 Pro). It corresponds to the source text originally released under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/) (CC BY-NC-ND 4.0).
 
+### Working UI Demo
+![Application Walkthrough](DraftingManualUI/public/assets/working_ui_demo.webp)
+
 ## Self-Serve Conversion Engine Tooling
 
 The robust PDF-to-XHTML conversion pipeline, as well as the generalized generic frontend UI for displaying such converted documents, have been decoupled and moved to the dedicated `pdf-convert-llm` repository under the Ad Hoc team. 
