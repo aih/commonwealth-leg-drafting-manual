@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PDF view of the file 9781848599635-1-en.pdf</title>
+
+	
+<link rel="icon" href="https://www.thecommonwealth-ilibrary.org/public/presses/1/favicon_en_US.png">
+<meta name="generator" content="Open Monograph Press 3.3.0.13">
+<link rel="schema.DC" href="https://purl.org/dc/elements/1.1/" />
+<meta name="DC.Date.created" scheme="ISO8601" content="2017-11-30"/>
+<meta name="DC.Date.dateSubmitted" scheme="ISO8601" content="2021-11-17"/>
+<meta name="DC.Date.modified" scheme="ISO8601" content="2023-10-31"/>
+<meta name="DC.Identifier" content="873/873/7306"/>
+<meta name="DC.Identifier.URI" content="https://www.thecommonwealth-ilibrary.org/index.php/comsec/catalog/book/873/873/7306"/>
+<meta name="DC.Language" scheme="ISO639-1" content="en"/>
+<meta name="DC.Rights" content="Copyright (c) 2017 Commonwealth Secretariat"/>
+<meta name="DC.Rights" content="https://creativecommons.org/licenses/by-nc-nd/4.0"/>
+<meta name="DC.Source" content="Commonwealth iLibrary"/>
+<meta name="DC.Source.URI" content="https://www.thecommonwealth-ilibrary.org/index.php/comsec"/>
+<meta name="DC.Subject" xml:lang="en" content="Governance"/>
+<meta name="DC.Subject" xml:lang="en" content="drafting – law"/>
+<meta name="DC.Subject" xml:lang="en" content="instructions"/>
+<meta name="DC.Subject" xml:lang="en" content="Legislation"/>
+<meta name="DC.Title" content="Foreword"/>
+<meta name="DC.Type" content="Text.Chapter"/>
+<meta name="DC.Type" xml:lang="en" content="Text"/>
+	<link rel="stylesheet" href="https://www.thecommonwealth-ilibrary.org/index.php/comsec/$$$call$$$/page/page/css?name=stylesheet" type="text/css" /><link rel="stylesheet" href="https://www.thecommonwealth-ilibrary.org/index.php/comsec/$$$call$$$/page/page/css?name=font" type="text/css" /><link rel="stylesheet" href="https://www.thecommonwealth-ilibrary.org/lib/pkp/styles/fontawesome/fontawesome.css?v=3.3.0.13" type="text/css" />
+	<script src="https://www.thecommonwealth-ilibrary.org/lib/pkp/lib/vendor/components/jquery/jquery.min.js?v=3.3.0.13" type="text/javascript"></script><script src="https://www.thecommonwealth-ilibrary.org/lib/pkp/lib/vendor/components/jqueryui/jquery-ui.min.js?v=3.3.0.13" type="text/javascript"></script><script src="https://www.thecommonwealth-ilibrary.org/plugins/themes/default/js/lib/popper/popper.js?v=3.3.0.13" type="text/javascript"></script><script src="https://www.thecommonwealth-ilibrary.org/plugins/themes/default/js/lib/bootstrap/util.js?v=3.3.0.13" type="text/javascript"></script><script src="https://www.thecommonwealth-ilibrary.org/plugins/themes/default/js/lib/bootstrap/dropdown.js?v=3.3.0.13" type="text/javascript"></script><script src="https://www.thecommonwealth-ilibrary.org/plugins/themes/default/js/main.js?v=3.3.0.13" type="text/javascript"></script>
+</head>
+<body class="pkp_page_catalog pkp_op_view">
+
+		<header class="header_viewable_file">
+
+		
+		<a href="https://www.thecommonwealth-ilibrary.org/index.php/comsec/catalog/book/873" class="return">
+			<span class="pkp_screen_reader">
+				Return to view details about Commonwealth Legislative Drafting Manual
+			</span>
+		</a>
+
+		<span class="title">
+			9781848599635-1-en.pdf
+		</span>
+
+		<a href="https://www.thecommonwealth-ilibrary.org/index.php/comsec/catalog/download/873/873/7306?inline=1" class="download" download>
+			<span class="label">
+				Download
+			</span>
+			<span class="pkp_screen_reader">
+				Download PDF
+			</span>
+		</a>
+
+	</header>
+
+	<script type="text/javascript" src="https://www.thecommonwealth-ilibrary.org/plugins/generic/pdfJsViewer/pdf.js/build/pdf.js"></script>
+	<script type="text/javascript">
+		
+			$(document).ready(function() {
+				PDFJS.workerSrc='https://www.thecommonwealth-ilibrary.org/plugins/generic/pdfJsViewer/pdf.js/build/pdf.worker.js';
+				PDFJS.getDocument('https://www.thecommonwealth-ilibrary.org/index.php/comsec/catalog/download/873/873/7306?inline=1').then(function(pdf) {
+					// Using promise to fetch the page
+					pdf.getPage(1).then(function(page) {
+						var pdfCanvasContainer = $('#pdfCanvasContainer');
+						var canvas = document.getElementById('pdfCanvas');
+						canvas.height = pdfCanvasContainer.height();
+						canvas.width = pdfCanvasContainer.width()-2; // 1px border each side
+						var viewport = page.getViewport(canvas.width / page.getViewport(1.0).width);
+						var context = canvas.getContext('2d');
+						var renderContext = {
+							canvasContext: context,
+							viewport: viewport
+						};
+						page.render(renderContext);
+					});
+				});
+			});
+		
+	</script>
+	<script type="text/javascript" src="https://www.thecommonwealth-ilibrary.org/plugins/generic/pdfJsViewer/pdf.js/web/viewer.js"></script>
+	<script type="text/javascript">
+		// Creating iframe's src in JS instead of Smarty so that EZProxy-using sites can find our domain in $pdfUrl and do their rewrites on it.
+		$(document).ready(function() {
+			var urlBase = "https://www.thecommonwealth-ilibrary.org/plugins/generic/pdfJsViewer/pdf.js/web/viewer.html?file=";
+			var pdfUrl = "https:\/\/www.thecommonwealth-ilibrary.org\/index.php\/comsec\/catalog\/download\/873\/873\/7306?inline=1";
+			$("#pdfCanvasContainer > iframe").attr("src", urlBase + encodeURIComponent(pdfUrl));
+		});
+	</script>
+
+	<div id="pdfCanvasContainer" class="viewable_file_frame">
+				<iframe src="" width="100%" height="100%" style="min-height: 500px;" allowfullscreen webkitallowfullscreen></iframe>
+	</div>
+	
+</body>
+</html>
