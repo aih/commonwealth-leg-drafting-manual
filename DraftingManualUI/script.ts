@@ -928,7 +928,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const contentElement = specificRoot || doc.body; 
             console.log("Setting chapterContent.innerHTML");
             
-            chapterContent.innerHTML = contentElement ? contentElement.innerHTML : html;
+            let finalHtml = contentElement ? contentElement.innerHTML : html;
+            const chunkError = doc.querySelector('chunk_processing_error');
+            if (chunkError && chunkError.textContent) {
+                // If LLM returned invalid XML, it's wrapped in an error node and HTML encoded. Unescape it via textContent.
+                finalHtml = chunkError.textContent;
+            }
+            chapterContent.innerHTML = finalHtml;
             // --- End fetching/parsing ---
 
             console.log("Updating currentFilename and title");
